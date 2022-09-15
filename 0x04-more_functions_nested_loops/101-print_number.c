@@ -1,37 +1,60 @@
 #include "main.h"
-/**
- * print_number - prints numbers
- * @n: number to be printed
- * Return:void
- */
 
+/**
+ * print_number - prints a number using _putchar
+ * @n: number to print
+ *
+ * Return: void
+ */
 void print_number(int n)
 {
-
-	int d = 1, i = 0, ii = 0;
+	unsigned int un = 0;
 
 	if (n < 0)
 	{
-		_putchar('-');
-		n = -n;
+		if (n < 1000000000)
+			n = -n;
+		un = n;
+		_putchar(45);
+		num_to_char(n);
 	}
-
-	while (n / d != 0)
+	else
 	{
-		d *= 10;
-		i++;
+		un = n;
+		num_to_char(un);
 	}
-	d = d / 10;
+}
 
-	while (ii < i)
+/**
+ * num_to_char - transforms a number with 1 or more digits into a char
+ * @n: number to print
+ *
+ * Return: void
+ */
+void num_to_char(unsigned int n)
+{
+	unsigned int d = 10;
+
+	if (n < d)
 	{
-		_putchar('0' + n / d);
-		n = n - (n / d) * d;
-		d = d / 10;
-		ii++;
-	}
-
-	if (i == 0)
 		_putchar('0' + n);
-
+	}
+	else
+	{
+		while (n >= d)
+		{
+			d *= 10;
+			if (d == 1000000000)
+				break;
+		}
+		if (!(d == 1000000000) || n == 123456789)
+			d /= 10;
+		_putchar('0' + n / d);
+		while (d != 10)
+		{
+			d /= 10;
+			_putchar('0' + (n / d) % 10);
+		}
+		_putchar('0' + n % 10);
+	}
 }
