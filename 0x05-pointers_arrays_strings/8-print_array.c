@@ -1,30 +1,28 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
-*puts_half - prints every other character of a string
-*@str: A pointer to an int that will be changed
-*
-*Return: void which means our answer is correct
-*/
+ * print_array - print `n` elements of an array of integers
+ * @a: int type array pointer
+ * @n: int type integer
+ * Description: Numbers must be separated by comma and space.
+ * Numbers should be displayed in the same order they are stored in array.
+ * You can only use _putchar to print.
+ */
 
-void puts_half(char *str)
-
+void print_array(int *a, int n)
 {
-int i, last;
+	int i;
 
-i = 0;
-while (str[i] != '\0')
-{
-i++;
-}
-
-last = (i + 1) / 2;
-
-for (i = last; str[i]; i++)
-{
-_putchar (str[i]);
-}
-
-_putchar ('\n');
+	i = 0;
+	for (n--; n >= 0; n--, i++)
+	{
+		printf("%d", a[i]);
+		if (n > 0)
+		{
+			printf(", ");
+		}
+	}
+	printf("\n");
 
 }
